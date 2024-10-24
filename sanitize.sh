@@ -14,9 +14,10 @@ for dir in "${dir_array[@]}"; do
     done
 done
 
-# Rename all remaining gif files to have the name of their directory without the _files suffix
+# Rename all remaining gif files and move them to their parent directory
 for dir in "${dir_array[@]}"; do
-    find "$dir" -type d | while read folder; do
+    find "$dir" -mindepth 1 -type d | while read folder; do
+        parent_dir=$(dirname "$folder")
         dir_name=$(basename "$folder")
         dir_name_no_suffix=${dir_name%_files}
         
@@ -28,10 +29,13 @@ for dir in "${dir_array[@]}"; do
                 # Remove "giphy" prefix and replace it with the directory name without _files suffix
                 new_name="${filename/giphy/$dir_name_no_suffix}"
                 
-                # Rename the file
-                mv "$file" "$folder/$new_name"
+                # Rename the file and move it to the parent directory
+                mv "$file" "$parent_dir/$new_name"
             fi
         done
+        
+        # Remove the now-empty subdirectory
+        rmdir "$folder" 2>/dev/null
     done
 done
 

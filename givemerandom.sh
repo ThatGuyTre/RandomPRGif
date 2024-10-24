@@ -1,5 +1,5 @@
 # Find all GIF files in the Good directory
-good_files=(Good/*/*.gif)
+good_files=(Good/*.gif)
 
 # Check if there are any GIF files in Good
 if [ ${#good_files[@]} -eq 0 ]; then
@@ -15,7 +15,7 @@ cp "$random_good_file" "./Good.gif"
 echo "Copied $random_good_file to ./Good.gif"
 
 # Find all GIF files in the Bad directory
-bad_files=(Bad/*/*.gif)
+bad_files=(Bad/*.gif)
 
 # Check if there are any GIF files in Bad
 if [ ${#bad_files[@]} -eq 0 ]; then
@@ -32,7 +32,7 @@ echo "Copied $random_bad_file to ./Bad.gif"
 
 
 # Find all GIF files in the Request directory
-request_files=(Request/*/*.gif)
+request_files=(Request/*.gif)
 
 # Check if there are any GIF files in Request
 if [ ${#request_files[@]} -eq 0 ]; then
