@@ -1,5 +1,5 @@
 # Make an array of directories to sanitize
-dir_array=(/Good /Bad /Request)
+dir_array=(./Good ./Bad ./Request)
 
 # Delete all non-gif files and gif files not starting with 'giphy' in each directory
 for dir in "${dir_array[@]}"; do
